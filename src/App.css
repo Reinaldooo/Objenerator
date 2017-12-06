@@ -79,8 +79,8 @@
 }
 
 input {
-  height: 28px;
-  width: 250px;
+  height: 100%;
+  width: 150px;
 }
 
 .field-item select {
@@ -94,4 +94,26 @@ input {
 
 .introduction {
   height: 100px
+}
+
+.add-field {
+  font-size: 15px;
+  margin-left: 25px;
+  line-height: 50px;
+  cursor: pointer;
+  text-transform: uppercase;
+  line-height: normal;
+  vertical-align: middle;
+  color: red
+}
+
+.remove-field {
+  font-size: 15px;
+  margin-left: 10px;
+  line-height: 50px;
+  cursor: pointer;
+  text-transform: uppercase;
+  line-height: normal;
+  vertical-align: middle;
+  color: red
 }

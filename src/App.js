@@ -1,8 +1,25 @@
 import React, { Component } from 'react';
+import uuidv4 from 'uuid/v4';
 import './App.css';
+import Field from './components/Field'
 
 
 class App extends Component {
+  state = {
+    fields: [1]
+  }
+
+  removeKey = () => this.setState((prevState) => {
+    if(this.state.fields.length > 1) {
+    return {fields: prevState.fields.slice(0, -1)};
+  }});
+
+  addKey = () => this.setState((prevState) => {
+    if(this.state.fields.length < 10) {
+    return {fields: prevState.fields.concat(uuidv4())};
+  }});
+
+
   render() {
     return (
       <div className="App">
@@ -13,41 +30,17 @@ class App extends Component {
           <div className="introduction"></div>
         </div>
         <div className="container">
-          <div className="array">{"{"}</div>
-            <div className="field-container">
-              <div className="first-field"><input type="text"/></div>
-              <div className="colon">:</div>
-              <div className="second-field">
-                <div className="field-item">
-                  <select defaultValue="choose" onChange={(event) => console.log(event.target.value) }>
-                    <option value="choose" disabled>Choose One</option>
-                    <option value="currentlyReading">String</option>
-                    <option value="wantToRead">Number</option>
-                    <option value="read">Img URL</option>
-                    <option value="none">Boolean</option>
-                  </select>
-                </div>
-                <div className="field-item">
-                  <select defaultValue="choose" onChange={(event) => console.log(event.target.value) }>
-                    <option value="choose" disabled>Choose One</option>
-                    <option value="currentlyReading">String</option>
-                    <option value="wantToRead">Number</option>
-                    <option value="read">Img URL</option>
-                    <option value="none">Boolean</option>
-                  </select>
-                </div>
-                <div className="field-item">
-                  <select defaultValue="choose" onChange={(event) => console.log(event.target.value) }>
-                    <option value="choose" disabled>Choose One</option>
-                    <option value="currentlyReading">String</option>
-                    <option value="wantToRead">Number</option>
-                    <option value="read">Img URL</option>
-                    <option value="none">Boolean</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          <div className="array">{"}"}</div>
+          <div className="array">{"["}</div>
+          <div className="array">{"{"}
+            <span className="add-field" onClick={this.addKey}>Add key</span>
+          </div>
+          {
+            this.state.fields.map(field => <Field key={field}/>)
+          }
+          <div className="array">{"},"}
+            <span className="remove-field" onClick={this.removeKey}>Remove key</span>
+          </div>
+          <div className="array">{"]"}</div>
         </div>
       </div>
     );
