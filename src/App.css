@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  color: gray
 }
 
 .App-logo {
@@ -9,9 +12,10 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 10%;
   padding: 20px;
   color: white;
+  flex: 1
 }
 
 .App-title {
@@ -25,4 +29,69 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.container {
+  align-self: center;
+  display: flex;
+  flex-direction: column;  
+  line-height: normal;
+  vertical-align: middle;
+  margin-top: 2%
+}
+
+.field-container {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  padding: 5px
+}
+
+.first-field {
+  flex: 1;
+  height: 30px;
+  margin-top: 1%;
+  line-height: 30px;
+}
+
+.second-field {
+  background-color: red;
+  flex: 3;
+  height: 30px;
+  margin-top: 1%;
+  line-height: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start
+}
+
+.array {
+  align-self: flex-start;
+  font-size: 50px;
+  margin-left: 1%
+}
+
+.colon {
+  align-self: center;
+  font-size: 30px;
+  margin: 0 1%;
+  line-height: 30px;
+}
+
+input {
+  height: 28px;
+  width: 250px;
+}
+
+.field-item select {
+  flex: 0 1;
+  height: 30px;
+  margin-left: 5px;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.introduction {
+  height: 100px
 }
