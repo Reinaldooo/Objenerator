@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 // import uuidv4 from 'uuid/v4';
-import { getFriends } from '../helpers'
 import { objCreator } from '../App'
 
 
@@ -13,7 +12,8 @@ class Field extends Component {
         stringPlaceholder: "Your text here",
         firstDefaultValue: 'choose',
         secondFieldChoice: null,
-        thirdFieldChoice: null
+        thirdFieldChoice: null,
+        fieldOk: false
     }
     second = (x) => {
         switch(x) {
@@ -47,18 +47,58 @@ class Field extends Component {
             this.setState({ thirdFieldChoice: 'text' });
             break
 
+            case "friends": {
+                if(this.state.keyName === '') {
+                    let newKey = {};
+                    newKey.name = 'EmptyKey';
+                    newKey.body = 'friends';
+                    this.setState({ fieldOk: true });
+                    objCreator(newKey);
+                } else {
+                    let newKey = {};
+                    newKey.name = this.state.keyName;
+                    newKey.body = 'friends';
+                    this.setState({ fieldOk: true });
+                    objCreator(newKey);
+                }
+            }
+            break
+
+            case "himym": {
+                if(this.state.keyName === '') {
+                    let newKey = {};
+                    newKey.name = 'EmptyKey';
+                    newKey.body = 'himym';
+                    this.setState({ fieldOk: true });
+                    objCreator(newKey);
+                } else {
+                    let newKey = {};
+                    newKey.name = this.state.keyName;
+                    newKey.body = 'himym';
+                    this.setState({ fieldOk: true });
+                    objCreator(newKey);
+                }
+            }
+            break
+
             default:
             console.log('default')
         }
     }
+
     stringSubmit = (newKey) => {
-        if(this.state.typedString === '') {
-        alert(this.state.stringPlaceholder)
+        if(this.state.keyName === '') {
+            let newKey = {};
+            newKey.name = 'EmptyKey';
+            newKey.body = this.state.typedString;
+            this.setState({ fieldOk: true });
+            objCreator(newKey);
         } else {
-        let newKey = {};
-        newKey.name = this.state.keyName;
-        newKey.body = getFriends();
-        objCreator(newKey)
+            let newKey = {};
+            newKey.name = this.state.keyName;
+            newKey.body = this.state.typedString;
+            objCreator(newKey);
+            this.setState({ fieldOk: true });
         }
     }
 
@@ -95,9 +135,9 @@ class Field extends Component {
                     {this.state.secondFieldChoice === 'string' &&
                     <select defaultValue="choose" onChange={(event) => this.third(event.target.value)}>
                         <option value="choose" disabled>Choose One</option>
-                        <option value="text">I want to type it</option>
-                        <option value="friends">Random name from F.r.i.e.n.d.s</option>
-                        <option value="himym">Random name from HIMYM</option>
+                        <option value="text">Custom</option>
+                        <option value="friends">Random character from F.R.I.E.N.D.S</option>
+                        <option value="himym">Random character from HIMYM</option>
                     </select>
                     }
                 </div>
@@ -119,7 +159,7 @@ class Field extends Component {
                     {this.state.thirdFieldChoice === 'text' &&
                     <div>
                     <input type="text" placeholder={this.state.stringPlaceholder} value={this.state.typedString} onChange={(event) => this.setState({ typedString: event.target.value })}/>
-                    <button onClick={this.stringSubmit}>OK</button>
+                    <button className="button" onClick={this.stringSubmit}>OK</button>
                     </div>
                     }
                 </div>

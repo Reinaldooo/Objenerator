@@ -86,6 +86,6 @@ export const images = [
     "Zoey",
     "Nora",
 ];
-
+export const getHIMYM = () => HIMYM[Math.floor(Math.random() * 14)]
 export const randomYear = () => Math.floor(Math.random() * 82) + 1937;
 export const random1to1000 = () => Math.floor(Math.random() * 1001);

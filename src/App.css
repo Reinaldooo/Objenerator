@@ -55,24 +55,28 @@
 
 .first-field {
   flex: 1;
-  height: 50px;
+  height: 35px;
   margin-top: 1%;
-  line-height: 30px;
-  background-color: pink;
-  padding: 5px
+  line-height: 35px;
+  vertical-align: middle;
+  background-color: #F5F5F5;
+  padding: 5px;  
+  border-radius: 10px
 }
 
 .second-field {
-  background-color: red;
+  background-color: #E0E0E0;
   flex: 3;
-  height: 50px;
+  height: 35px;
   margin-top: 1%;
-  line-height: 30px;
+  line-height: 35px;
+  vertical-align: middle;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   width: 600px;
-  padding: 5px
+  padding: 5px;
+  border-radius: 10px
 }
 
 .array {
@@ -89,17 +93,20 @@
 }
 
 input {
-  height: 30px;
+  height: 28px;
   width: 150px;
+  border: none;
+  padding-left: 10px
 }
 
-.field-item select {
+.field-item select, input {
   flex: 0 1;
   height: 30px;
   margin-left: 5px;
   border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
+  color: gray
 }
 
 .introduction {
@@ -107,23 +114,29 @@ input {
 }
 
 .add-field {
-  font-size: 15px;
+  font-size: 30px;
   margin-left: 25px;
   line-height: 50px;
   cursor: pointer;
   text-transform: uppercase;
-  line-height: normal;
   vertical-align: middle;
-  color: red
+  color: gray
 }
 
 .remove-field {
-  font-size: 15px;
-  margin-left: 10px;
+  font-size: 30px;
+  margin-left: 13px;
   line-height: 50px;
   cursor: pointer;
   text-transform: uppercase;
-  line-height: normal;
   vertical-align: middle;
-  color: red
+  color: gray
+}
+
+.button {
+  height: 30px;
+  cursor: pointer;
+  border: none;
+  margin-left: 5px;
+  color: gray
 }
