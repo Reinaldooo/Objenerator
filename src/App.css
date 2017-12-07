@@ -74,7 +74,22 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  width: 600px;
+  width: 550px;
+  padding: 5px;
+  border-radius: 10px
+}
+
+.second-field-ok {
+  background-color: #81C784;
+  flex: 3;
+  height: 35px;
+  margin-top: 1%;
+  line-height: 35px;
+  vertical-align: middle;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 550px;
   padding: 5px;
   border-radius: 10px
 }
@@ -106,7 +121,8 @@ input {
   border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  color: gray
+  color: gray;
+  text-align: center
 }
 
 .introduction {

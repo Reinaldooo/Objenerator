@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import uuidv4 from 'uuid/v4';
 import './App.css';
 import Field from './components/Field'
-import { getFriends, getHIMYM } from './helpers/helpers'
+import { getFriends, getHIMYM, randomYear, random18to90, getImages } from './helpers/helpers'
 
 const obj = {}
 
@@ -15,6 +15,31 @@ export const objCreator = (key) => {
     }
     case "himym": {
       obj[key.name] = getHIMYM();
+      console.log(obj)
+      break
+    }
+    case "year": {
+      obj[key.name] = randomYear();
+      console.log(obj)
+      break
+    }
+    case "18to90": {
+      obj[key.name] = random18to90();
+      console.log(obj)
+      break
+    }
+    case "600": {
+      obj[key.name] = getImages();
+      console.log(obj)
+      break
+    }
+    case true: {
+      obj[key.name] = true;
+      console.log(obj)
+      break
+    }
+    case false: {
+      obj[key.name] = false;
       console.log(obj)
       break
     }

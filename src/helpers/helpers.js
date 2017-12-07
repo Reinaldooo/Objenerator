@@ -69,6 +69,7 @@ export const images = [
   ];
 
   export const getFriends = () => friends[Math.floor(Math.random() * 14)]
+  export const getImages = () => images[Math.floor(Math.random() * 50)]
 
   export const HIMYM = [
     "Ted",
@@ -87,5 +88,6 @@ export const images = [
     "Nora",
 ];
 export const getHIMYM = () => HIMYM[Math.floor(Math.random() * 14)]
-export const randomYear = () => Math.floor(Math.random() * 82) + 1937;
+export const randomYear = () => Math.floor(Math.random() * 82) + 1940;
 export const random1to1000 = () => Math.floor(Math.random() * 1001);
+export const random18to90 = () => Math.floor(Math.random() * 73) + 18;
