@@ -51,7 +51,8 @@ export const objCreator = (key) => {
 
 class App extends Component {
   state = {
-    fields: ['fa78f93e-2d9c-4867-95f0-51b99ad3bc58']
+    fields: ['fa78f93e-2d9c-4867-95f0-51b99ad3bc58'],
+    results: false
   }
 
   removeKey = () => this.setState((prevState) => {
@@ -69,24 +70,34 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Objenerator</h1>
-        </header>
-        <div className="container">
+          <h1 className="App-title">Objenerator<span style={{color: 'red'}}>.</span></h1>
+          <p>Here you can create random, but customizable Javascript objects.</p>
+        </header>        
+          {!this.state.results ?
+          <div className="container">
           <div className="introduction"></div>
-        </div>
-        <div className="container">
           <div className="array">{"["}</div>
-          <div className="array">{"{"}
-            <span className="add-field" onClick={this.addKey}><i className="fa fa-plus-circle" aria-hidden="true"></i></span>
+          <div className="obj">{"{"}
+            <span className={this.state.fields.length === 10 ? "add-field-error" : "add-field"} onClick={this.addKey}><i className="fa fa-plus-circle" aria-hidden="true"></i></span>
+            <input type="text" placeholder="Number of objects"/>
+            <button className="submit" onClick={() => this.setState({ results: false })}>Ok</button>
           </div>
           {
             this.state.fields.map(field => <Field id={field} key={field}/>)
           }
-          <div className="array">{"},"}
-            <span className="remove-field" onClick={this.removeKey}><i className="fa fa-minus-circle" aria-hidden="true"></i></span>
+          <div className="obj">{"},"}
+            <span className={this.state.fields.length === 1 ? "remove-field-error" : "remove-field"} onClick={this.removeKey}><i className="fa fa-minus-circle" aria-hidden="true"></i></span>
+            <button className="submit" onClick={() => this.setState({ results: true })}>Generate</button>
           </div>
           <div className="array">{"]"}</div>
-        </div>
+          </div>
+          :
+          <div style={{marginTop: '30px'}}>
+            <button className="submit" onClick={() => this.setState({ results: false })}>Reset</button>
+            <h1>Your objects:</h1>
+            <textarea>{JSON.stringify(this.state.fields)}</textarea>
+          </div>
+          }
       </div>
     );
   }
