@@ -3,10 +3,16 @@ import uuidv4 from 'uuid/v4';
 import './App.css';
 import Field from './components/Field'
 
+const obj = {}
+
+export const objCreator = (key) => {
+  obj[key.name] = key.body
+  console.log(obj)
+}
 
 class App extends Component {
   state = {
-    fields: [1]
+    fields: ['fa78f93e-2d9c-4867-95f0-51b99ad3bc58']
   }
 
   removeKey = () => this.setState((prevState) => {
@@ -19,7 +25,7 @@ class App extends Component {
     return {fields: prevState.fields.concat(uuidv4())};
   }});
 
-
+  
   render() {
     return (
       <div className="App">
@@ -35,7 +41,7 @@ class App extends Component {
             <span className="add-field" onClick={this.addKey}>Add key</span>
           </div>
           {
-            this.state.fields.map(field => <Field key={field}/>)
+            this.state.fields.map(field => <Field id={field} key={field}/>)
           }
           <div className="array">{"},"}
             <span className="remove-field" onClick={this.removeKey}>Remove key</span>

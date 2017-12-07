@@ -51,7 +51,7 @@ export const images = [
     "https://images.unsplash.com/photo-1511580624238-7ccdfbf4a73b?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=600&h=600&fit=crop&s=e735d8526de191571a34ca9e94c3ba6b"
   ];
 
-  export const friends = [
+  const friends = [
       "Rachel",
       "Joey",
       "Chandler",
@@ -67,6 +67,8 @@ export const images = [
       "Richard",
       "Carol",
   ];
+
+  export const getFriends = () => friends[Math.floor(Math.random() * 14)]
 
   export const HIMYM = [
     "Ted",
