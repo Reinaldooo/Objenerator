@@ -3,6 +3,7 @@ import uuidv4 from 'uuid/v4';
 import './App.css';
 import Field from './components/Field'
 import { getFriends, getHIMYM, randomYear, random18to90, getImages } from './helpers/helpers'
+import Logo from './Logo.png';
 
 const obj = {}
 
@@ -61,7 +62,7 @@ class App extends Component {
   }});
 
   addKey = () => this.setState((prevState) => {
-    if(this.state.fields.length < 10) {
+    if(this.state.fields.length < 8) {
     return {fields: prevState.fields.concat(uuidv4())};
   }});
 
@@ -70,15 +71,16 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Objenerator<span style={{color: 'red'}}>.</span></h1>
-          <p>Here you can create random, but customizable Javascript objects.</p>
+            <img className="App-logo" alt='logo' src={Logo}/>     
+            <h1 className="App-title">Objenerator<span style={{color: 'red'}}>.</span></h1>
+            <p>Create random, customizable Javascript objects.</p>
         </header>        
           {!this.state.results ?
           <div className="container">
           <div className="introduction"></div>
           <div className="array">{"["}</div>
           <div className="obj">{"{"}
-            <span className={this.state.fields.length === 10 ? "add-field-error" : "add-field"} onClick={this.addKey}><i className="fa fa-plus-circle" aria-hidden="true"></i></span>
+            <span className={this.state.fields.length === 8 ? "add-field-error" : "add-field"} onClick={this.addKey}><i className="fa fa-plus-circle" aria-hidden="true"></i></span>
             <input type="text" placeholder="Number of objects"/>
             <button className="submit" onClick={() => this.setState({ results: false })}>Ok</button>
           </div>
@@ -87,7 +89,7 @@ class App extends Component {
           }
           <div className="obj">{"},"}
             <span className={this.state.fields.length === 1 ? "remove-field-error" : "remove-field"} onClick={this.removeKey}><i className="fa fa-minus-circle" aria-hidden="true"></i></span>
-            <button className="submit" onClick={() => this.setState({ results: true })}>Generate</button>
+            <button className="submit" onClick={() => this.setState({ results: true })}>Generate Objects</button>
           </div>
           <div className="array">{"]"}</div>
           </div>

@@ -163,7 +163,7 @@ class Field extends Component {
             <div className={!this.state.fieldOk ? "second-field" : "second-field-ok" }>
                 <div className="field-item">
                     <select defaultValue="choose" onChange={(event) => this.second(event.target.value)}>
-                        <option value="choose" disabled>Choose One</option>
+                        <option value="choose" disabled>Options</option>
                         <option value="string">String</option>
                         <option value="number">Number</option>
                         <option value="img">Img URL</option>
@@ -174,7 +174,7 @@ class Field extends Component {
                 <div className="field-item">                    
                     {this.state.secondFieldChoice === 'string' &&
                     <select defaultValue="choose" onChange={(event) => this.third(event.target.value)}>
-                        <option value="choose" disabled>Choose One</option>
+                        <option value="choose" disabled>Options</option>
                         <option value="text">Custom</option>
                         <option value="friends">Random character from F.R.I.E.N.D.S</option>
                         <option value="himym">Random character from HIMYM</option>
@@ -182,7 +182,7 @@ class Field extends Component {
                     }
                     {this.state.secondFieldChoice === 'number' &&
                     <select defaultValue="choose" onChange={(event) => this.third(event.target.value)}>
-                        <option value="choose" disabled>Choose One</option>
+                        <option value="choose" disabled>Options</option>
                         <option value="number">Custom</option>
                         <option value="year">Random year from 1940</option>
                         <option value="18to90">Random age from 18 to 90</option>
@@ -190,16 +190,16 @@ class Field extends Component {
                     }
                     {this.state.secondFieldChoice === 'img' &&
                     <select defaultValue="choose" onChange={(event) => this.third(event.target.value)}>
-                        <option value="choose" disabled>Choose One</option>
+                        <option value="choose" disabled>Options</option>
                         <option value="text">Custom</option>
                         <option value="600">Random 600x600px image</option>
                     </select>
                     }
                     {this.state.secondFieldChoice === 'bool' &&
                     <select defaultValue="choose" onChange={(event) => this.third(event.target.value)}>
-                        <option value="choose" disabled>Choose One</option>
+                        <option value="choose" disabled>Options</option>
                         <option value="true">True</option>
-                        <option value="false">false</option>
+                        <option value="false">False</option>
                     </select>
                     }
                 </div>
