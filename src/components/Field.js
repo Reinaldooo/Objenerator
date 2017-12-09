@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import uuidv4 from 'uuid/v4';
-import { objCreator } from '../App'
 
 
 class Field extends Component {
@@ -38,7 +37,7 @@ class Field extends Component {
                 newKey.name = this.state.keyName;
                 newKey.body = uuidv4();
                 this.setState({ secondFieldChoice: null, thirdFieldChoice: null, fieldOk: false, typedString: '' });
-                objCreator(newKey);
+                this.props.objCreator(newKey);
             break
 
             default:
@@ -60,7 +59,7 @@ class Field extends Component {
                     newKey.name = this.state.keyName;
                     newKey.body = 'friends';
                     this.setState({ thirdFieldChoice: null, fieldOk: false, typedString: '' });
-                    objCreator(newKey);
+                    this.props.objCreator(newKey);
             }
             break
 
@@ -69,7 +68,7 @@ class Field extends Component {
                     newKey.name = this.state.keyName;
                     newKey.body = 'himym';
                     this.setState({ thirdFieldChoice: null, fieldOk: false, typedString: '' });
-                    objCreator(newKey);
+                    this.props.objCreator(newKey);
             }
             break
 
@@ -78,7 +77,7 @@ class Field extends Component {
                 newKey.name = this.state.keyName;
                 newKey.body = 'year';
                 this.setState({ thirdFieldChoice: null, fieldOk: false, typedString: '' });
-                objCreator(newKey);
+                this.props.objCreator(newKey);
             }
             break
 
@@ -87,7 +86,7 @@ class Field extends Component {
                 newKey.name = this.state.keyName;
                 newKey.body = '18to90';
                 this.setState({ thirdFieldChoice: null, fieldOk: false, typedString: '' });
-                objCreator(newKey);
+                this.props.objCreator(newKey);
             }
             break
 
@@ -96,7 +95,7 @@ class Field extends Component {
                 newKey.name = this.state.keyName;
                 newKey.body = '600';
                 this.setState({ thirdFieldChoice: null, fieldOk: false, typedString: '' });
-                objCreator(newKey);
+                this.props.objCreator(newKey);
             }
             break
 
@@ -105,7 +104,7 @@ class Field extends Component {
                 newKey.name = this.state.keyName;
                 newKey.body = true;
                 this.setState({ thirdFieldChoice: null, fieldOk: false, typedString: '' });
-                objCreator(newKey);
+                this.props.objCreator(newKey);
             }
             break
 
@@ -114,7 +113,7 @@ class Field extends Component {
                 newKey.name = this.state.keyName;
                 newKey.body = false;
                 this.setState({ thirdFieldChoice: null, fieldOk: false, typedString: '' });
-                objCreator(newKey);
+                this.props.objCreator(newKey);
             }
             break
 
@@ -129,12 +128,12 @@ class Field extends Component {
             newKey.name = 'EmptyKey';
             newKey.body = this.state.typedString;
             this.setState({ fieldOk: true });
-            objCreator(newKey);
+            this.props.objCreator(newKey);
         } else {
             let newKey = {};
             newKey.name = this.state.keyName;
             newKey.body = this.state.typedString;
-            objCreator(newKey);
+            this.props.objCreator(newKey);
             this.setState({ fieldOk: true });
         }
     }
@@ -145,12 +144,12 @@ class Field extends Component {
             newKey.name = 'EmptyKey';
             newKey.body = Number(this.state.typedString);
             this.setState({ fieldOk: true });
-            objCreator(newKey);
+            this.props.objCreator(newKey);
         } else {
             let newKey = {};
             newKey.name = this.state.keyName;
             newKey.body = Number(this.state.typedString);
-            objCreator(newKey);
+            this.props.objCreator(newKey);
             this.setState({ fieldOk: true });
         }
     }
