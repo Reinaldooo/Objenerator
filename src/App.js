@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import uuidv4 from 'uuid/v4';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import beautify from 'js-beautify';
+import FlipMove from 'react-flip-move';
 
 import Field from './components/Field'
 import Logo from './Logo.png';
@@ -14,7 +15,12 @@ import {
   getImages,
   getBool } from './helpers/helpers'
 import './App.css';
-  
+
+const Textarea = (props) => {
+  return (
+    <textarea defaultValue={beautify(JSON.stringify(props.endResult), { indent_size: 2 })}/>
+  )
+}
 
 class App extends Component {
 
@@ -25,7 +31,9 @@ class App extends Component {
     obj: [],
     endResult: [],
     empty: false,
-    copyButton: 'Copy All'
+    copyButton: 'Copy All',
+    update: false,
+    editing: false
   }
 
   removeKey = () => this.setState((prevState) => {
@@ -40,132 +48,252 @@ class App extends Component {
 
   objCreator = (key) => {
     switch(key.body) {
+
       case "friends": {
         this.setState((prevState) => {
+          if(this.state.obj.find(obj => obj[key.id])) {
+            return {
+            obj: prevState.obj.filter(obj => !obj[key.id]).concat({
+              [key.id]: {                
+                key: key.name,
+                body: () => getFriends()
+              }
+            })
+          }
+        } else {
           return {
-          obj: prevState.obj.concat({
-            [key.id]: {                
-              key: key.name,
-              body: () => getFriends()
-            }
-          })
+            obj: prevState.obj.concat({
+              [key.id]: {                
+                key: key.name,
+                body: () => getFriends()
+              }
+            })
+          }
         }
       })
         break  
       }
+
       case "himym": {
         this.setState((prevState) => {
+          if(this.state.obj.find(obj => obj[key.id])) {
+            return {
+            obj: prevState.obj.filter(obj => !obj[key.id]).concat({
+              [key.id]: {                
+                key: key.name,
+                body: () => getHIMYM()
+              }
+            })
+          }
+        } else {
           return {
-          obj: prevState.obj.concat({
-            [key.id]: {                
-              key: key.name,
-              body: () => getHIMYM()
-            }
-          })
+            obj: prevState.obj.concat({
+              [key.id]: {                
+                key: key.name,
+                body: () => getHIMYM()
+              }
+            })
+          }
         }
       })
         break
       }
+
       case "cities": {
         this.setState((prevState) => {
+          if(this.state.obj.find(obj => obj[key.id])) {
+            return {
+            obj: prevState.obj.filter(obj => !obj[key.id]).concat({
+              [key.id]: {                
+                key: key.name,
+                body: () => randomCity()
+              }
+            })
+          }
+        } else {
           return {
-          obj: prevState.obj.concat({
-            [key.id]: {                
-              key: key.name,
-              body: () => randomCity()
-            }
-          })
+            obj: prevState.obj.concat({
+              [key.id]: {                
+                key: key.name,
+                body: () => randomCity()
+              }
+            })
+          }
         }
       })
         break
       }
+
       case "id": {
         this.setState((prevState) => {
+          if(this.state.obj.find(obj => obj[key.id])) {
+            return {
+            obj: prevState.obj.filter(obj => !obj[key.id]).concat({
+              [key.id]: {                
+                key: key.name,
+                body: () => uuidv4()
+              }
+            })
+          }
+        } else {
           return {
-          obj: prevState.obj.concat({
-            [key.id]: {                
-              key: key.name,
-              body: () => uuidv4()
-            }
-          })
+            obj: prevState.obj.concat({
+              [key.id]: {                
+                key: key.name,
+                body: () => uuidv4()
+              }
+            })
+          }
         }
       })
         break
       }
+
       case "year": {
         this.setState((prevState) => {
+          if(this.state.obj.find(obj => obj[key.id])) {
+            return {
+            obj: prevState.obj.filter(obj => !obj[key.id]).concat({
+              [key.id]: {                
+                key: key.name,
+                body: () => randomYear()
+              }
+            })
+          }
+        } else {
           return {
-          obj: prevState.obj.concat({
-            [key.id]: {                
-              key: key.name,
-              body: () => randomYear()
-            }
-          })
+            obj: prevState.obj.concat({
+              [key.id]: {                
+                key: key.name,
+                body: () => randomYear()
+              }
+            })
+          }
         }
       })
         break
       }
+
       case "18to90": {
         this.setState((prevState) => {
+          if(this.state.obj.find(obj => obj[key.id])) {
+            return {
+            obj: prevState.obj.filter(obj => !obj[key.id]).concat({
+              [key.id]: {                
+                key: key.name,
+                body: () => random18to90()
+              }
+            })
+          }
+        } else {
           return {
-          obj: prevState.obj.concat({
-            [key.id]: {                
-              key: key.name,
-              body: () => random18to90()
-            }
-          })
+            obj: prevState.obj.concat({
+              [key.id]: {                
+                key: key.name,
+                body: () => random18to90()
+              }
+            })
+          }
         }
       })
         break
       }
+
       case "600": {
         this.setState((prevState) => {
+          if(this.state.obj.find(obj => obj[key.id])) {
+            return {
+            obj: prevState.obj.filter(obj => !obj[key.id]).concat({
+              [key.id]: {                
+                key: key.name,
+                body: () => getImages()
+              }
+            })
+          }
+        } else {
           return {
-          obj: prevState.obj.concat({
-            [key.id]: {                
-              key: key.name,
-              body: () => getImages()
-            }
-          })
+            obj: prevState.obj.concat({
+              [key.id]: {                
+                key: key.name,
+                body: () => getImages()
+              }
+            })
+          }
         }
       })
         break
       }
+
       case 'true': {
         this.setState((prevState) => {
+          if(this.state.obj.find(obj => obj[key.id])) {
+            return {
+            obj: prevState.obj.filter(obj => !obj[key.id]).concat({
+              [key.id]: {                
+                key: key.name,
+                body: true
+              }
+            })
+          }
+        } else {
           return {
-          obj: prevState.obj.concat({
-            [key.id]: {                
-              key: key.name,
-              body: true
-            }
-          })
+            obj: prevState.obj.concat({
+              [key.id]: {                
+                key: key.name,
+                body: true
+              }
+            })
+          }
         }
       })
         break
       }
+
       case 'false': {
         this.setState((prevState) => {
+          if(this.state.obj.find(obj => obj[key.id])) {
+            return {
+            obj: prevState.obj.filter(obj => !obj[key.id]).concat({
+              [key.id]: {                
+                key: key.name,
+                body: false
+              }
+            })
+          }
+        } else {
           return {
-          obj: prevState.obj.concat({
-            [key.id]: {                
-              key: key.name,
-              body: false
-            }
-          })
+            obj: prevState.obj.concat({
+              [key.id]: {                
+                key: key.name,
+                body: false
+              }
+            })
+          }
         }
       })
         break
       }
+
       case 'getBool': {
         this.setState((prevState) => {
+          if(this.state.obj.find(obj => obj[key.id])) {
+            return {
+            obj: prevState.obj.filter(obj => !obj[key.id]).concat({
+              [key.id]: {                
+                key: key.name,
+                body: () => getBool()
+              }
+            })
+          }
+        } else {
           return {
-          obj: prevState.obj.concat({
-            [key.id]: {                
-              key: key.name,
-              body: () => getBool()
-            }
-          })
+            obj: prevState.obj.concat({
+              [key.id]: {                
+                key: key.name,
+                body: () => getBool()
+              }
+            })
+          }
         }
       })
         break
@@ -173,7 +301,17 @@ class App extends Component {
 
       default:
       this.setState((prevState) => {
+        if(this.state.obj.find(obj => obj[key.id])) {
         return {
+        obj: prevState.obj.filter(obj => !obj[key.id]).concat({
+          [key.id]: {                
+            key: key.name,
+            body: key.body
+          }
+        })
+      }
+    } else {
+      return {
         obj: prevState.obj.concat({
           [key.id]: {                
             key: key.name,
@@ -181,6 +319,7 @@ class App extends Component {
           }
         })
       }
+    }
     })
       break
     }
@@ -195,7 +334,7 @@ class App extends Component {
   endResult = async () => {
     if(this.state.obj.length === 0) {
       await this.setState({ empty: true });
-      setTimeout(() => {this.setState({ empty: false })}, 3000)
+      setTimeout(() => {this.setState({ empty: false })}, 2500)
     } else {
     await this.repeat();
     await this.setState({ results: true })
@@ -217,6 +356,10 @@ class App extends Component {
   }
 
   render() {
+
+    const hide = { display: 'none' };
+    const show = {};
+
     return (
       <div className="App">
         <header className="App-header">
@@ -224,8 +367,7 @@ class App extends Component {
             <h1 className="App-title">Objenerator<span style={{color: 'red'}}>.</span></h1>
             <p>Create random, customizable Javascript objects or Python dictionaries.</p>
         </header>        
-          {!this.state.results ?
-          <div className="container">
+          <div className="container" style={this.state.results ? hide : show}>
             {
               this.state.empty && 
               <div className="empty-keys">You need to set at least one key!</div>
@@ -252,37 +394,47 @@ class App extends Component {
                 />
               </label>  
             </div>
-            {
-              this.state.fields.map(field => <Field objCreator={this.objCreator} id={field} key={field}/>)
-            }
+            <FlipMove duration={300} easing="ease">
+              {this.state.fields.map(field => <Field editing={this.state.editing} update={this.state.update} objCreator={this.objCreator} id={field} key={field}/>)}
+            </FlipMove>
             <div className="obj">{"},"}</div>
             <div className="array">
                 {"]"}
                 <button className="submit" onClick={this.endResult}>Generate Objects</button>
             </div>
           </div>
-          :
-          <div style={{marginTop: '30px'}}>
-            <CopyToClipboard
-            text={beautify(JSON.stringify(this.state.endResult),
-            { indent_size: 2 })}
-            onCopy={() => this.setState({ copyButton: 'Copied' })}>
-            <button className={this.state.copyButton === 'Copied' ? "submit" : 'submit-gray'}>{this.state.copyButton}</button>
-            </CopyToClipboard>
-            <button
-              className="submit-gray"
-              onClick={() => this.setState({
-                results: false,
-                fields: ['fa78f93e-2d9c-4867-95f0-51b99ad3bc58'],
-                objectsCount: '',
-                obj: [],
-                endResult: [],
-                empty: false
-              })}>Reset
-            </button>
-            <h1 style={{marginBottom: 0}}>Your objects:</h1>
-            <textarea defaultValue={beautify(JSON.stringify(this.state.endResult), { indent_size: 2 })}/>
-          </div>
+          {this.state.results &&
+              <div style={{ marginTop: '30px' }}>
+                <CopyToClipboard
+                text={beautify(JSON.stringify(this.state.endResult), { indent_size: 2 })}
+                onCopy={() => this.setState({ copyButton: 'Copied' })}>
+                <button className={this.state.copyButton === 'Copied' ? "submit" : 'submit-gray'} style={{ marginLeft: 0 }}>{this.state.copyButton}</button>
+                </CopyToClipboard>
+                <button
+                  className="submit-gray"
+                  onClick={() => this.setState({
+                    results: false,
+                    copyButton: 'Copy All',
+                    endResult: [],
+                    editing: true
+                  })}>Edit
+                </button>
+                <button
+                  className="submit-gray"
+                  style={{ backgroundColor: '#EF5350' }}
+                  onClick={() => this.setState({
+                    results: false,
+                    fields: ['fa78f93e-2d9c-4867-95f0-51b99ad3bc58'],
+                    objectsCount: '',
+                    obj: [],
+                    endResult: [],
+                    empty: false,
+                    update: true
+                  })}>Reset
+                </button>
+                <h1 style={{marginBottom: 0}}>Your objects:</h1>
+                <Textarea endResult={this.state.endResult}/>
+              </div>
           }
       </div>
     );

@@ -265,8 +265,6 @@ label {
   border: 2px solid #81C784;
   -webkit-appearance: none;
      -moz-appearance: none;
-          appearance: none;
-  appearance: none;
   color: gray;
   text-align: center;
   font-weight: 700;  
@@ -324,7 +322,6 @@ label {
   cursor: pointer;
   margin-left: 5px;
   color: white;
-  display: inline;
   border: none;
   background-color: #81C784;
   text-transform: uppercase;
@@ -352,7 +349,7 @@ label {
   margin-left: 20px;
   color: white;  
   border-radius: 5px;
-  background-color: #CFD8DC;
+  background-color: #B0BEC5;
   font-weight: 700
 }
 
@@ -366,7 +363,7 @@ textarea {
 }
 
 .empty-keys {
-  margin: 1.5vh auto;
+  margin: 20px auto 0 auto;
   background-color: #EF5350;
   border-radius: 10px;
   padding: 10px;

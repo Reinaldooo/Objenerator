@@ -14,6 +14,22 @@ class Field extends Component {
         fieldOk: false,
         emptyKey: false
     }
+
+    componentWillReceiveProps(nextProps) {
+        if(this.props.update !== nextProps.update) {
+        this.setState({
+        keyName: '',
+        keyPlaceholder: 'Key name',
+        typedString: '',
+        stringPlaceholder: "Your text here",
+        selectDefaultValue: 'choose',
+        secondFieldChoice: null,
+        thirdFieldChoice: null,
+        fieldOk: false,
+        emptyKey: false })
+        }
+    }
+
     second = (x) => {
         switch(x) {
             case "string":
@@ -216,8 +232,19 @@ class Field extends Component {
                 type="text"
                 placeholder={this.state.keyPlaceholder}
                 value={this.state.keyName}
-                onChange={(event) => this.setState({ keyName: event.target.value, emptyKey: false, keyPlaceholder: 'Key name' })}
-                />
+                onChange={async (event) => {
+                    if(!this.props.editing) {
+                    this.setState({ keyName: event.target.value, emptyKey: false, keyPlaceholder: 'Key name' })
+                    } else {
+                    this.setState({
+                        keyName: event.target.value,
+                        emptyKey: false,
+                        selectDefaultValue: 'choose',
+                        fieldOk: false,
+                        secondFieldChoice: null,
+                        thirdFieldChoice: null })                        
+                    }
+                }}/>                
             </div>
             <div className="colon">:</div>
             <div className="second-field">
