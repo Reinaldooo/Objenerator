@@ -9,8 +9,13 @@ input {
 
 .App {
   text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   color: #B0BEC5;
   height: 100vh;
   width: 100vw;
@@ -25,7 +30,9 @@ input {
   padding: 20px;
   color: white;
   height: 20%;
-  flex: 1
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1
 }
 
 .App-title {
@@ -37,30 +44,54 @@ input {
   font-size: large;
 }
 
+@-webkit-keyframes App-logo-spin {
+  from { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+}
+
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
 }
 
 .container {
-  align-self: center;
+  -ms-flex-item-align: center;
+      align-self: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;  
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;  
   line-height: normal;
   vertical-align: middle;
-  flex: 4
+  -webkit-box-flex: 4;
+      -ms-flex: 4;
+          flex: 4
 }
 
 .field-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 5px;
 }
 
 .first-field {
-  flex: 1;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   height: 25px;
   margin-top: 1%;
   line-height: 25px;
@@ -70,36 +101,59 @@ input {
 }
 
 .second-field {
-  flex: 3;
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
   height: 25px;
   margin-top: 1%;
   line-height: 25px;
   vertical-align: middle;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;  
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;  
   padding: 6px 8px 6px 0;  
   border-radius: 10px;
   min-width: 600px;
 }
 
 .array {
-  align-self: flex-start;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   font-size: 40px;
   margin-left: 1%;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .obj {
-  align-self: flex-start;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   font-size: 40px;
   margin-left: 5%;
   line-height: normal;
-  align-items: center;
-  justify-content: center
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center
 }
 
 .obj-input {
@@ -121,7 +175,8 @@ input {
 }
 
 .colon {
-  align-self: center;
+  -ms-flex-item-align: center;
+      align-self: center;
   font-size: 30px;
   margin: 0 1%;
   line-height: 30px;
@@ -138,7 +193,9 @@ label {
 }
 
 .inputs {
-  flex: 0 1;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1;
+          flex: 0 1;
   height: 30px;
   margin-left: 8px;
   border: 2px solid #ECEFF1;
@@ -149,11 +206,42 @@ label {
   font-weight: 700;  
   border-radius: 5px;
   padding: 0 5px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+::-webkit-input-placeholder {
+  color:gray;
+}
+
+::-moz-placeholder {
+  color:gray;
+}
+
+::-ms-placeholder {
+  color:gray;
+}
+
+::-webkit-input-placeholder {
+  color:gray;
+}
+
+:-ms-input-placeholder {
+  color:gray;
+}
+
+::-ms-input-placeholder {
+  color:gray;
+}
+
+::placeholder {
+  color:gray;
 }
 
 .inputs-error {
-  flex: 0 1;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1;
+          flex: 0 1;
   height: 30px;
   margin-left: 8px;
   border: 2px solid #EF5350;
@@ -164,22 +252,28 @@ label {
   font-weight: 700;  
   border-radius: 5px;
   padding: 0 5px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .inputs-ok {
-  flex: 0 1;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1;
+          flex: 0 1;
   height: 30px;
   margin-left: 8px;
   border: 2px solid #81C784;
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   appearance: none;
   color: gray;
   text-align: center;
   font-weight: 700;  
   border-radius: 5px;
   padding: 0 5px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .introduction {
@@ -279,3 +373,6 @@ textarea {
   color: white  
 }
 
+textarea:focus, input:focus, select:focus{
+  outline: none;
+}
