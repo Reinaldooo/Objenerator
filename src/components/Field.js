@@ -12,7 +12,8 @@ class Field extends Component {
         firstDefaultValue: 'choose',
         secondFieldChoice: null,
         thirdFieldChoice: null,
-        fieldOk: false
+        fieldOk: false,
+        emptyKey: false
     }
     second = (x) => {
         switch(x) {
@@ -32,12 +33,17 @@ class Field extends Component {
             this.setState({ secondFieldChoice: 'bool', thirdFieldChoice: null, fieldOk: false, typedString: '' })
             break
             
-            case "id":
+            case "id": 
+            if(this.state.keyName === '') {
+                this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name', secondFieldChoice: null, firstDefaultValue: 'choose' });
+            } else {
                 let newKey = {};
                 newKey.name = this.state.keyName;
                 newKey.body = uuidv4();
-                this.setState({ secondFieldChoice: null, thirdFieldChoice: null, fieldOk: false, typedString: '' });
+                newKey.id = this.props.id;
+                this.setState({ secondFieldChoice: null, thirdFieldChoice: null, fieldOk: true, typedString: '' });
                 this.props.objCreator(newKey);
+            }        
             break
 
             default:
@@ -47,74 +53,102 @@ class Field extends Component {
     third = (x) => {
         switch(x) {
             case "text":
-            this.setState({ thirdFieldChoice: 'text' });
+            this.setState({ thirdFieldChoice: 'text', fieldOk: false });
             break
 
             case "number":
-            this.setState({ thirdFieldChoice: 'number' });
+            this.setState({ thirdFieldChoice: 'number', fieldOk: false });
             break
 
-            case "friends": {
-                    let newKey = {};
-                    newKey.name = this.state.keyName;
-                    newKey.body = 'friends';
-                    this.setState({ thirdFieldChoice: null, fieldOk: false, typedString: '' });
-                    this.props.objCreator(newKey);
-            }
+            case "friends": 
+            if(this.state.keyName === '') {
+                this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name', secondFieldChoice: null, firstDefaultValue: 'choose' });
+            } else {
+                let newKey = {};
+                newKey.name = this.state.keyName;
+                newKey.body = 'friends';
+                newKey.id = this.props.id;
+                this.setState({ thirdFieldChoice: null, fieldOk: true, typedString: '', emptyKey: false });
+                this.props.objCreator(newKey);
+            }        
             break
 
-            case "himym": {
-                    let newKey = {};
-                    newKey.name = this.state.keyName;
-                    newKey.body = 'himym';
-                    this.setState({ thirdFieldChoice: null, fieldOk: false, typedString: '' });
-                    this.props.objCreator(newKey);
-            }
+            case "himym": 
+            if(this.state.keyName === '') {
+                this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name', secondFieldChoice: null, firstDefaultValue: 'choose' });
+            } else {
+                let newKey = {};
+                newKey.name = this.state.keyName;
+                newKey.body = 'himym';
+                newKey.id = this.props.id;
+                this.setState({ thirdFieldChoice: null, fieldOk: true, typedString: '', emptyKey: false });
+                this.props.objCreator(newKey);
+            } 
             break
 
-            case "year": {
+            case "year":
+            if(this.state.keyName === '') {
+                this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name', secondFieldChoice: null, firstDefaultValue: 'choose' });
+            } else {
                 let newKey = {};
                 newKey.name = this.state.keyName;
                 newKey.body = 'year';
-                this.setState({ thirdFieldChoice: null, fieldOk: false, typedString: '' });
+                newKey.id = this.props.id;
+                this.setState({ thirdFieldChoice: null, fieldOk: true, typedString: '', emptyKey: false });
                 this.props.objCreator(newKey);
-            }
+            }      
             break
 
-            case "18to90": {
+            case "18to90":
+             if(this.state.keyName === '') {
+                this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name', secondFieldChoice: null, firstDefaultValue: 'choose' });
+            } else {
                 let newKey = {};
                 newKey.name = this.state.keyName;
                 newKey.body = '18to90';
-                this.setState({ thirdFieldChoice: null, fieldOk: false, typedString: '' });
+                newKey.id = this.props.id;
+                this.setState({ thirdFieldChoice: null, fieldOk: true, typedString: '', emptyKey: false });
                 this.props.objCreator(newKey);
-            }
+            }        
             break
 
-            case "600": {
+            case "600":
+            if(this.state.keyName === '') {
+                this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name', secondFieldChoice: null, firstDefaultValue: 'choose' });
+            } else {
                 let newKey = {};
                 newKey.name = this.state.keyName;
                 newKey.body = '600';
-                this.setState({ thirdFieldChoice: null, fieldOk: false, typedString: '' });
+                newKey.id = this.props.id;
+                this.setState({ thirdFieldChoice: null, fieldOk: true, typedString: '', emptyKey: false });
                 this.props.objCreator(newKey);
-            }
+            }        
             break
 
-            case "true": {
+            case "true":
+            if(this.state.keyName === '') {
+                this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name', secondFieldChoice: null, firstDefaultValue: 'choose' });
+            } else {
                 let newKey = {};
                 newKey.name = this.state.keyName;
                 newKey.body = true;
-                this.setState({ thirdFieldChoice: null, fieldOk: false, typedString: '' });
+                newKey.id = this.props.id;
+                this.setState({ thirdFieldChoice: null, fieldOk: true, typedString: '', emptyKey: false });
                 this.props.objCreator(newKey);
-            }
+            }        
             break
 
-            case "false": {
+            case "false":
+            if(this.state.keyName === '') {
+                this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name', secondFieldChoice: null, firstDefaultValue: 'choose' });
+            } else {
                 let newKey = {};
                 newKey.name = this.state.keyName;
                 newKey.body = false;
-                this.setState({ thirdFieldChoice: null, fieldOk: false, typedString: '' });
+                newKey.id = this.props.id;
+                this.setState({ thirdFieldChoice: null, fieldOk: true, typedString: '', emptyKey: false });
                 this.props.objCreator(newKey);
-            }
+            }        
             break
 
             default:
@@ -124,15 +158,12 @@ class Field extends Component {
 
     stringSubmit = (newKey) => {
         if(this.state.keyName === '') {
-            let newKey = {};
-            newKey.name = 'EmptyKey';
-            newKey.body = this.state.typedString;
-            this.setState({ fieldOk: true });
-            this.props.objCreator(newKey);
+            this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name' });
         } else {
             let newKey = {};
             newKey.name = this.state.keyName;
             newKey.body = this.state.typedString;
+            newKey.id = this.props.id;
             this.props.objCreator(newKey);
             this.setState({ fieldOk: true });
         }
@@ -140,15 +171,12 @@ class Field extends Component {
 
     numberSubmit = (newKey) => {
         if(this.state.keyName === '') {
-            let newKey = {};
-            newKey.name = 'EmptyKey';
-            newKey.body = Number(this.state.typedString);
-            this.setState({ fieldOk: true });
-            this.props.objCreator(newKey);
+            this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name' });
         } else {
             let newKey = {};
             newKey.name = this.state.keyName;
             newKey.body = Number(this.state.typedString);
+            newKey.id = this.props.id;
             this.props.objCreator(newKey);
             this.setState({ fieldOk: true });
         }
@@ -157,11 +185,19 @@ class Field extends Component {
   render() {
     return (
         <div className="field-container">
-            <div className="first-field"><input type="text" placeholder={this.state.keyPlaceholder} value={this.state.keyName} onChange={(event) => this.setState({ keyName: event.target.value })}/></div>
+            <div className="first-field">
+                <input
+                className={this.state.emptyKey ? "inputs-error" : "inputs"}
+                type="text"
+                placeholder={this.state.keyPlaceholder}
+                value={this.state.keyName}
+                onChange={(event) => this.setState({ keyName: event.target.value, emptyKey: false, keyPlaceholder: 'Key name' })}
+                />
+            </div>
             <div className="colon">:</div>
-            <div className={!this.state.fieldOk ? "second-field" : "second-field-ok" }>
+            <div className="second-field">
                 <div className="field-item">
-                    <select defaultValue="choose" onChange={(event) => this.second(event.target.value)}>
+                    <select className={this.state.fieldOk ? "inputs-ok" : "inputs"} value={this.state.firstDefaultValue} onChange={(event) => this.second(event.target.value)}>
                         <option value="choose" disabled>Options</option>
                         <option value="string">String</option>
                         <option value="number">Number</option>
@@ -172,7 +208,7 @@ class Field extends Component {
                 </div>
                 <div className="field-item">                    
                     {this.state.secondFieldChoice === 'string' &&
-                    <select defaultValue="choose" onChange={(event) => this.third(event.target.value)}>
+                    <select className={this.state.fieldOk ? "inputs-ok" : "inputs"} defaultValue="choose" onChange={(event) => this.third(event.target.value)}>
                         <option value="choose" disabled>Options</option>
                         <option value="text">Custom</option>
                         <option value="friends">Random character from F.R.I.E.N.D.S</option>
@@ -180,7 +216,7 @@ class Field extends Component {
                     </select>
                     }
                     {this.state.secondFieldChoice === 'number' &&
-                    <select defaultValue="choose" onChange={(event) => this.third(event.target.value)}>
+                    <select className={this.state.fieldOk ? "inputs-ok" : "inputs"} defaultValue="choose" onChange={(event) => this.third(event.target.value)}>
                         <option value="choose" disabled>Options</option>
                         <option value="number">Custom</option>
                         <option value="year">Random year from 1940</option>
@@ -188,34 +224,33 @@ class Field extends Component {
                     </select>
                     }
                     {this.state.secondFieldChoice === 'img' &&
-                    <select defaultValue="choose" onChange={(event) => this.third(event.target.value)}>
+                    <select className={this.state.fieldOk ? "inputs-ok" : "inputs"} defaultValue="choose" onChange={(event) => this.third(event.target.value)}>
                         <option value="choose" disabled>Options</option>
                         <option value="text">Custom</option>
                         <option value="600">Random 600x600px image</option>
                     </select>
                     }
                     {this.state.secondFieldChoice === 'bool' &&
-                    <select defaultValue="choose" onChange={(event) => this.third(event.target.value)}>
+                    <select className={this.state.fieldOk ? "inputs-ok" : "inputs"} defaultValue="choose" onChange={(event) => this.third(event.target.value)}>
                         <option value="choose" disabled>Options</option>
                         <option value="true">True</option>
                         <option value="false">False</option>
                     </select>
                     }
                 </div>
-                <div className="field-item">
-                    {this.state.thirdFieldChoice === 'number' &&
-                    <div>
-                    <input type="text" placeholder={this.state.stringPlaceholder} value={this.state.typedString} onChange={(event) => this.setState({ typedString: event.target.value })}/>
+                {this.state.thirdFieldChoice === 'number' &&
+                    <div className="field-item">
+                    <input className={this.state.fieldOk ? "inputs-ok" : "inputs"} type="text" placeholder={this.state.stringPlaceholder} value={this.state.typedString} onChange={(event) => this.setState({ typedString: event.target.value })}/>
                     <button className="button" onClick={this.numberSubmit}>OK</button>
                     </div>
-                    }
-                    {this.state.thirdFieldChoice === 'text' &&
-                    <div>
-                    <input type="text" placeholder={this.state.stringPlaceholder} value={this.state.typedString} onChange={(event) => this.setState({ typedString: event.target.value })}/>
+                }
+                {this.state.thirdFieldChoice === 'text' &&
+                    <div className="field-item">
+                    <input className={this.state.fieldOk ? "inputs-ok" : "inputs"} type="text" placeholder={this.state.stringPlaceholder} value={this.state.typedString} onChange={(event) => this.setState({ typedString: event.target.value })}/>
                     <button className="button" onClick={this.stringSubmit}>OK</button>
                     </div>
-                    }
-                </div>
+                }
+                
             </div>
         </div>
     );

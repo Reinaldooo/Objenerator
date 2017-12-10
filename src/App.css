@@ -1,14 +1,18 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
-
-* {
+body {
   font-family: 'Lato', sans-serif;
+}
+
+input {
+  border: 2px solid rgb(207, 207, 207);
 }
 
 .App {
   text-align: center;
   display: flex;
   flex-direction: column;
-  color: gray
+  color: gray;
+  height: 100vh;
+  width: 100vw;
 }
 
 .App-logo {
@@ -17,9 +21,9 @@
 
 .App-header {
   background-color: #222;
-  height: 10%;
   padding: 20px;
   color: white;
+  height: 20%;
   flex: 1
 }
 
@@ -43,14 +47,14 @@
   flex-direction: column;  
   line-height: normal;
   vertical-align: middle;
-  margin-top: 2%
+  flex: 4
 }
 
 .field-container {
   display: flex;
   flex-direction: row;
-  flex: 1;
-  padding: 5px
+  padding: 5px;
+  flex: 0 1
 }
 
 .first-field {
@@ -59,13 +63,11 @@
   margin-top: 1%;
   line-height: 25px;
   vertical-align: middle;
-  background-color: #F5F5F5;
-  padding: 5px;  
+  padding: 6px 8px 6px 0;  
   border-radius: 10px
 }
 
 .second-field {
-  background-color: #F5F5F5;
   flex: 3;
   height: 25px;
   margin-top: 1%;
@@ -73,25 +75,10 @@
   vertical-align: middle;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  width: 550px;
-  padding: 5px;
-  border-radius: 10px
-}
-
-.second-field-ok {
-  background-color: #BDBDBD;
-  width: 550px;
-  flex: 3;
-  height: 25px;
-  margin-top: 1%;
-  line-height: 25px;
-  vertical-align: middle;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 5px;
-  border-radius: 10px
+  align-items: flex-start;  
+  padding: 6px 8px 6px 0;  
+  border-radius: 10px;
+  min-width: 600px;
 }
 
 .array {
@@ -113,10 +100,22 @@
   justify-content: center
 }
 
-.obj input {
+.obj-input {
   border: 1px solid rgb(230, 230, 230);
-  width: 50px;
-  border-radius: 10px
+  width: 2vw;
+  min-width: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-left: 5px
+}
+
+.obj-input-ok {
+  border: 2px solid #81C784;
+  width: 2vw;
+  min-width: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-left: 5px
 }
 
 .colon {
@@ -127,24 +126,58 @@
 }
 
 label {
-  font-size: 15px;
+  font-size: .35em;
   margin-left: 25px;
   line-height: 50px;
   vertical-align: middle;
-  color: gray;
-  font-family: 'Lato', sans-serif;
+  color: rgb(207, 207, 207);
+  text-transform: uppercase;
+  font-weight: 700
 }
 
-.field-item select, input {
+.inputs {
   flex: 0 1;
-  height: 20px;
-  margin-left: 5px;
-  border: none;
+  height: 30px;
+  margin-left: 8px;
+  border: 2px solid rgb(207, 207, 207);
   -webkit-appearance: none;
   -moz-appearance: none;
   color: gray;
   text-align: center;
-  font-weight: 700
+  font-weight: 700;  
+  border-radius: 5px;
+  padding: 0 5px;
+  box-sizing: border-box;
+}
+
+.inputs-error {
+  flex: 0 1;
+  height: 30px;
+  margin-left: 8px;
+  border: 2px solid #EF5350;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  color: gray;
+  text-align: center;
+  font-weight: 700;  
+  border-radius: 5px;
+  padding: 0 5px;
+  box-sizing: border-box;
+}
+
+.inputs-ok {
+  flex: 0 1;
+  height: 30px;
+  margin-left: 8px;
+  border: 2px solid #81C784;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  color: gray;
+  text-align: center;
+  font-weight: 700;  
+  border-radius: 5px;
+  padding: 0 5px;
+  box-sizing: border-box;
 }
 
 .introduction {
@@ -153,7 +186,7 @@ label {
 
 .add-field {
   font-size: 25px;
-  margin-left: 25px;
+  margin-left: 5px;
   line-height: 50px;
   cursor: pointer;
   vertical-align: middle;
@@ -162,17 +195,17 @@ label {
 
 .add-field-error {
   font-size: 25px;
-  margin-left: 25px;
+  margin-left: 5px;
   line-height: 50px;
   cursor: pointer;
   text-transform: uppercase;
   vertical-align: middle;
-  color: red
+  color: #EF5350
 }
 
 .remove-field {
-  font-size: 30px;
-  margin-left: 13px;
+  font-size: 25px;
+  margin-left: 5px;
   line-height: 50px;
   cursor: pointer;
   text-transform: uppercase;
@@ -181,21 +214,26 @@ label {
 }
 
 .remove-field-error {
-  font-size: 30px;
-  margin-left: 13px;
+  font-size: 25px;
+  margin-left: 5px;
   line-height: 50px;
   cursor: pointer;
   text-transform: uppercase;
   vertical-align: middle;
-  color: red
+  color: #EF5350
 }
 
 .button {
   height: 20px;
   cursor: pointer;
-  border: none;
   margin-left: 5px;
-  color: gray
+  color: white;
+  display: inline;
+  border: none;
+  background-color: #81C784;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 5px
 }
 
 .submit {
@@ -206,13 +244,23 @@ label {
   margin-left: 20px;
   color: white;  
   border-radius: 10px;
-  background-color: #F44336
+  background-color: #81C784
 }
 
 textarea {
     padding:10px;
-    margin-top: 10px;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
     width:600px;
     height: 500px;
     border-radius:10px;
 }
+
+.empty-keys {
+  margin: 1.5vh auto;
+  background-color: #EF5350;
+  border-radius: 10px;
+  padding: 10px;
+  color: white  
+}
+
