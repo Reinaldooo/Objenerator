@@ -1,4 +1,4 @@
-export const images = [
+const images = [
     "https://images.unsplash.com/photo-1510505710893-29cf1cad2d33?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=600&h=600&fit=crop&s=37e57843f844c6fad906fe33ca913af1",
     "https://images.unsplash.com/photo-1510505710893-29cf1cad2d33?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=600&h=600&fit=crop&s=37e57843f844c6fad906fe33ca913af1",
     "https://images.unsplash.com/photo-1510505710893-29cf1cad2d33?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=600&h=600&fit=crop&s=37e57843f844c6fad906fe33ca913af1",
@@ -49,9 +49,9 @@ export const images = [
     "https://images.unsplash.com/photo-1510551768116-46a5da1539dc?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=600&h=600&fit=crop&s=690617ee366cf795bc413f0712b69bc8",
     "https://images.unsplash.com/photo-1511580624238-7ccdfbf4a73b?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=600&h=600&fit=crop&s=e735d8526de191571a34ca9e94c3ba6b",
     "https://images.unsplash.com/photo-1511580624238-7ccdfbf4a73b?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=600&h=600&fit=crop&s=e735d8526de191571a34ca9e94c3ba6b"
-  ];
+];
 
-  const friends = [
+const friends = [
       "Rachel",
       "Joey",
       "Chandler",
@@ -66,28 +66,70 @@ export const images = [
       "Ben",
       "Richard",
       "Carol",
-  ];
-
-  export const getFriends = () => friends[Math.floor(Math.random() * 14)]
-  export const getImages = () => images[Math.floor(Math.random() * 50)]
-
-  export const HIMYM = [
-    "Ted",
-    "Barney",
-    "Marchall",
-    "Tracy",
-    "Robin",
-    "Lily",
-    "Ranjit",
-    "Wendy",
-    "Victoria",
-    "Patrice",
-    "The Captain",
-    "Carl",
-    "Zoey",
-    "Nora",
 ];
+
+const HIMYM = [
+     "Ted",
+     "Barney",
+     "Marchall",
+     "Tracy",
+     "Robin",
+     "Lily",
+     "Ranjit",
+     "Wendy",
+     "Victoria",
+     "Patrice",
+     "The Captain",
+     "Carl",
+     "Zoey",
+     "Nora",
+];
+
+const cities = [
+     'Shanghai',
+     'Beijing',
+     'Delhi',
+     'Istanbul',
+     'Tokyo',
+     'Moscow',
+     'São Paulo',
+     'Rio de Janeiro',
+     'Shenzhen',
+     'Jakarta',
+     'Seoul',
+     'Cairo',
+     'Mexico City',
+     'London',
+     'Lima',
+     'New York City',
+     'Bangkok',
+     'Bogotá',
+     'Hong Kong',
+     'Santiago',
+     'Singapore',
+     'Saint Petersburg',
+     'Johannesburg',
+     'Los Angeles',
+     'Cape Town',
+     'Berlin',
+     'Casablanca',
+     'Madrid',
+     'Lisbon',
+     'Buenos Aires',
+     'Rome',
+     'Paris',
+     'Milan',
+     'Prague'    
+];
+
+const bool = [true,false,true,false,true,false];
+
+
+export const getBool = () => bool[Math.floor(Math.random() * 6)]
+export const getFriends = () => friends[Math.floor(Math.random() * 14)]
+export const getImages = () => images[Math.floor(Math.random() * 50)]
 export const getHIMYM = () => HIMYM[Math.floor(Math.random() * 14)]
 export const randomYear = () => Math.floor(Math.random() * 82) + 1940;
 export const random1to1000 = () => Math.floor(Math.random() * 1001);
 export const random18to90 = () => Math.floor(Math.random() * 73) + 18;
+export const randomCity = () => cities[Math.floor(Math.random() * 34)];

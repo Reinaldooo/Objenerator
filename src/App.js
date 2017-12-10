@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import uuidv4 from 'uuid/v4';
-import './App.css';
-import Field from './components/Field'
-import { getFriends, getHIMYM, randomYear, random18to90, getImages } from './helpers/helpers'
-import Logo from './Logo.png';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import beautify from 'js-beautify';
+
+import Field from './components/Field'
+import Logo from './Logo.png';
+import { 
+  randomCity,
+  getFriends,
+  getHIMYM,
+  randomYear,
+  random18to90,
+  getImages,
+  getBool } from './helpers/helpers'
+import './App.css';
   
 
 class App extends Component {
@@ -58,6 +66,32 @@ class App extends Component {
       })
         break
       }
+      case "cities": {
+        this.setState((prevState) => {
+          return {
+          obj: prevState.obj.concat({
+            [key.id]: {                
+              key: key.name,
+              body: () => randomCity()
+            }
+          })
+        }
+      })
+        break
+      }
+      case "id": {
+        this.setState((prevState) => {
+          return {
+          obj: prevState.obj.concat({
+            [key.id]: {                
+              key: key.name,
+              body: () => uuidv4()
+            }
+          })
+        }
+      })
+        break
+      }
       case "year": {
         this.setState((prevState) => {
           return {
@@ -97,7 +131,7 @@ class App extends Component {
       })
         break
       }
-      case true: {
+      case 'true': {
         this.setState((prevState) => {
           return {
           obj: prevState.obj.concat({
@@ -110,7 +144,7 @@ class App extends Component {
       })
         break
       }
-      case false: {
+      case 'false': {
         this.setState((prevState) => {
           return {
           obj: prevState.obj.concat({
@@ -123,6 +157,20 @@ class App extends Component {
       })
         break
       }
+      case 'getBool': {
+        this.setState((prevState) => {
+          return {
+          obj: prevState.obj.concat({
+            [key.id]: {                
+              key: key.name,
+              body: () => getBool()
+            }
+          })
+        }
+      })
+        break
+      }
+
       default:
       this.setState((prevState) => {
         return {
@@ -232,7 +280,7 @@ class App extends Component {
                 empty: false
               })}>Reset
             </button>
-            <h1>Your objects:</h1>
+            <h1 style={{marginBottom: 0}}>Your objects:</h1>
             <textarea defaultValue={beautify(JSON.stringify(this.state.endResult), { indent_size: 2 })}/>
           </div>
           }

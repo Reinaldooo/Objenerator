@@ -10,7 +10,7 @@ input {
   text-align: center;
   display: flex;
   flex-direction: column;
-  color: gray;
+  color: #B0BEC5;
   height: 100vh;
   width: 100vw;
 }
@@ -101,10 +101,10 @@ input {
 }
 
 .obj-input {
-  border: 1px solid rgb(230, 230, 230);
+  border: 2px solid #ECEFF1;
   width: 2vw;
   min-width: 20px;
-  border-radius: 10px;
+  border-radius: 5px;
   text-align: center;
   margin-left: 5px
 }
@@ -113,7 +113,7 @@ input {
   border: 2px solid #81C784;
   width: 2vw;
   min-width: 20px;
-  border-radius: 10px;
+  border-radius: 5px;
   text-align: center;
   margin-left: 5px
 }
@@ -130,7 +130,7 @@ label {
   margin-left: 25px;
   line-height: 50px;
   vertical-align: middle;
-  color: rgb(207, 207, 207);
+  color: #B0BEC5;
   text-transform: uppercase;
   font-weight: 700
 }
@@ -139,7 +139,7 @@ label {
   flex: 0 1;
   height: 30px;
   margin-left: 8px;
-  border: 2px solid rgb(207, 207, 207);
+  border: 2px solid #ECEFF1;
   -webkit-appearance: none;
   -moz-appearance: none;
   color: gray;
@@ -243,8 +243,9 @@ label {
   border: none;
   margin-left: 20px;
   color: white;  
-  border-radius: 10px;
-  background-color: #81C784
+  border-radius: 5px;
+  background-color: #81C784;
+  font-weight: 700
 }
 
 .submit-gray {
@@ -254,8 +255,9 @@ label {
   border: none;
   margin-left: 20px;
   color: white;  
-  border-radius: 10px;
-  background-color: gray
+  border-radius: 5px;
+  background-color: #CFD8DC;
+  font-weight: 700
 }
 
 textarea {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import uuidv4 from 'uuid/v4';
 
 
 class Field extends Component {
@@ -9,7 +8,7 @@ class Field extends Component {
         keyPlaceholder: 'Key name',
         typedString: '',
         stringPlaceholder: "Your text here",
-        firstDefaultValue: 'choose',
+        selectDefaultValue: 'choose',
         secondFieldChoice: null,
         thirdFieldChoice: null,
         fieldOk: false,
@@ -18,30 +17,69 @@ class Field extends Component {
     second = (x) => {
         switch(x) {
             case "string":
-            this.setState({ secondFieldChoice: 'string', thirdFieldChoice: null, fieldOk: false, typedString: '' })
+            this.setState({ secondFieldChoice: 'string', thirdFieldChoice: null, fieldOk: false, typedString: '', selectDefaultValue: 'text' })
             break
 
             case "number":
-            this.setState({ secondFieldChoice: 'number', thirdFieldChoice: null, fieldOk: false, typedString: '' })
+            this.setState({ secondFieldChoice: 'number', thirdFieldChoice: null, fieldOk: false, typedString: '', selectDefaultValue: 'number' })
             break
 
             case "img":
-            this.setState({ secondFieldChoice: 'img', thirdFieldChoice: null, fieldOk: false, typedString: '' })
+            this.setState({ secondFieldChoice: 'img', thirdFieldChoice: null, fieldOk: false, typedString: '', selectDefaultValue: 'img' })
             break
 
             case "bool":
-            this.setState({ secondFieldChoice: 'bool', thirdFieldChoice: null, fieldOk: false, typedString: '' })
+            this.setState({ secondFieldChoice: 'bool', thirdFieldChoice: null, fieldOk: false, typedString: '', selectDefaultValue: 'bool' })
             break
             
             case "id": 
             if(this.state.keyName === '') {
-                this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name', secondFieldChoice: null, firstDefaultValue: 'choose' });
+                this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name', secondFieldChoice: null, selectDefaultValue: 'choose' });
             } else {
                 let newKey = {};
                 newKey.name = this.state.keyName;
-                newKey.body = uuidv4();
+                newKey.body = 'id';
                 newKey.id = this.props.id;
-                this.setState({ secondFieldChoice: null, thirdFieldChoice: null, fieldOk: true, typedString: '' });
+                this.setState({ secondFieldChoice: null, thirdFieldChoice: null, fieldOk: true, typedString: '', selectDefaultValue: 'id' });
+                this.props.objCreator(newKey);
+            }        
+            break
+
+            case "true":
+            if(this.state.keyName === '') {
+                this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name', secondFieldChoice: null, selectDefaultValue: 'choose' });
+            } else {
+                let newKey = {};
+                newKey.name = this.state.keyName;
+                newKey.body = 'true';
+                newKey.id = this.props.id;
+                this.setState({ secondFieldChoice: null, thirdFieldChoice: null, fieldOk: true, typedString: '', selectDefaultValue: 'true' });
+                this.props.objCreator(newKey);
+            }        
+            break
+
+            case "false":
+            if(this.state.keyName === '') {
+                this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name', secondFieldChoice: null, selectDefaultValue: 'choose' });
+            } else {
+                let newKey = {};
+                newKey.name = this.state.keyName;
+                newKey.body = 'false';
+                newKey.id = this.props.id;
+                this.setState({ secondFieldChoice: null, thirdFieldChoice: null, fieldOk: true, typedString: '', selectDefaultValue: 'false' });
+                this.props.objCreator(newKey);
+            }        
+            break
+
+            case "getBool":
+            if(this.state.keyName === '') {
+                this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name', secondFieldChoice: null, selectDefaultValue: 'choose' });
+            } else {
+                let newKey = {};
+                newKey.name = this.state.keyName;
+                newKey.body = 'getBool';
+                newKey.id = this.props.id;
+                this.setState({ secondFieldChoice: null, thirdFieldChoice: null, fieldOk: true, typedString: '', selectDefaultValue: 'getBool' });
                 this.props.objCreator(newKey);
             }        
             break
@@ -62,7 +100,7 @@ class Field extends Component {
 
             case "friends": 
             if(this.state.keyName === '') {
-                this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name', secondFieldChoice: null, firstDefaultValue: 'choose' });
+                this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name', secondFieldChoice: null, selectDefaultValue: 'choose' });
             } else {
                 let newKey = {};
                 newKey.name = this.state.keyName;
@@ -75,7 +113,7 @@ class Field extends Component {
 
             case "himym": 
             if(this.state.keyName === '') {
-                this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name', secondFieldChoice: null, firstDefaultValue: 'choose' });
+                this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name', secondFieldChoice: null, selectDefaultValue: 'choose' });
             } else {
                 let newKey = {};
                 newKey.name = this.state.keyName;
@@ -86,9 +124,22 @@ class Field extends Component {
             } 
             break
 
+            case "cities": 
+            if(this.state.keyName === '') {
+                this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name', secondFieldChoice: null, selectDefaultValue: 'choose' });
+            } else {
+                let newKey = {};
+                newKey.name = this.state.keyName;
+                newKey.body = 'cities';
+                newKey.id = this.props.id;
+                this.setState({ thirdFieldChoice: null, fieldOk: true, typedString: '', emptyKey: false });
+                this.props.objCreator(newKey);
+            } 
+            break
+
             case "year":
             if(this.state.keyName === '') {
-                this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name', secondFieldChoice: null, firstDefaultValue: 'choose' });
+                this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name', secondFieldChoice: null, selectDefaultValue: 'choose' });
             } else {
                 let newKey = {};
                 newKey.name = this.state.keyName;
@@ -101,7 +152,7 @@ class Field extends Component {
 
             case "18to90":
              if(this.state.keyName === '') {
-                this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name', secondFieldChoice: null, firstDefaultValue: 'choose' });
+                this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name', secondFieldChoice: null, selectDefaultValue: 'choose' });
             } else {
                 let newKey = {};
                 newKey.name = this.state.keyName;
@@ -114,37 +165,11 @@ class Field extends Component {
 
             case "600":
             if(this.state.keyName === '') {
-                this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name', secondFieldChoice: null, firstDefaultValue: 'choose' });
+                this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name', secondFieldChoice: null, selectDefaultValue: 'choose' });
             } else {
                 let newKey = {};
                 newKey.name = this.state.keyName;
                 newKey.body = '600';
-                newKey.id = this.props.id;
-                this.setState({ thirdFieldChoice: null, fieldOk: true, typedString: '', emptyKey: false });
-                this.props.objCreator(newKey);
-            }        
-            break
-
-            case "true":
-            if(this.state.keyName === '') {
-                this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name', secondFieldChoice: null, firstDefaultValue: 'choose' });
-            } else {
-                let newKey = {};
-                newKey.name = this.state.keyName;
-                newKey.body = true;
-                newKey.id = this.props.id;
-                this.setState({ thirdFieldChoice: null, fieldOk: true, typedString: '', emptyKey: false });
-                this.props.objCreator(newKey);
-            }        
-            break
-
-            case "false":
-            if(this.state.keyName === '') {
-                this.setState({ emptyKey: true, keyPlaceholder: 'Please insert a key name', secondFieldChoice: null, firstDefaultValue: 'choose' });
-            } else {
-                let newKey = {};
-                newKey.name = this.state.keyName;
-                newKey.body = false;
                 newKey.id = this.props.id;
                 this.setState({ thirdFieldChoice: null, fieldOk: true, typedString: '', emptyKey: false });
                 this.props.objCreator(newKey);
@@ -197,12 +222,17 @@ class Field extends Component {
             <div className="colon">:</div>
             <div className="second-field">
                 <div className="field-item">
-                    <select className={this.state.fieldOk ? "inputs-ok" : "inputs"} value={this.state.firstDefaultValue} onChange={(event) => this.second(event.target.value)}>
+                    <select
+                    className={this.state.fieldOk ? "inputs-ok" : "inputs"}
+                    value={this.state.selectDefaultValue}
+                    onChange={(event) => this.second(event.target.value)}>
                         <option value="choose" disabled>Options</option>
                         <option value="string">String</option>
                         <option value="number">Number</option>
                         <option value="img">Img URL</option>
-                        <option value="bool">Boolean</option>
+                        <option value="true">True</option>
+                        <option value="false">False</option>
+                        <option value="getBool">True/False</option>
                         <option value="id">Unique ID</option>
                     </select>
                 </div>
@@ -211,8 +241,9 @@ class Field extends Component {
                     <select className={this.state.fieldOk ? "inputs-ok" : "inputs"} defaultValue="choose" onChange={(event) => this.third(event.target.value)}>
                         <option value="choose" disabled>Options</option>
                         <option value="text">Custom</option>
-                        <option value="friends">Random character from F.R.I.E.N.D.S</option>
-                        <option value="himym">Random character from HIMYM</option>
+                        <option value="friends">Random F.R.I.E.N.D.S character</option>
+                        <option value="himym">Random HIMYM character</option>
+                        <option value="cities">Random City</option>
                     </select>
                     }
                     {this.state.secondFieldChoice === 'number' &&
@@ -220,7 +251,7 @@ class Field extends Component {
                         <option value="choose" disabled>Options</option>
                         <option value="number">Custom</option>
                         <option value="year">Random year from 1940</option>
-                        <option value="18to90">Random age from 18 to 90</option>
+                        <option value="18to90">Random age</option>
                     </select>
                     }
                     {this.state.secondFieldChoice === 'img' &&
@@ -228,13 +259,6 @@ class Field extends Component {
                         <option value="choose" disabled>Options</option>
                         <option value="text">Custom</option>
                         <option value="600">Random 600x600px image</option>
-                    </select>
-                    }
-                    {this.state.secondFieldChoice === 'bool' &&
-                    <select className={this.state.fieldOk ? "inputs-ok" : "inputs"} defaultValue="choose" onChange={(event) => this.third(event.target.value)}>
-                        <option value="choose" disabled>Options</option>
-                        <option value="true">True</option>
-                        <option value="false">False</option>
                     </select>
                     }
                 </div>
