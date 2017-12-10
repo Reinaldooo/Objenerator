@@ -1,3 +1,4 @@
+
 body {
   font-family: 'Lato', sans-serif;
 }
@@ -16,7 +17,7 @@ input {
 }
 
 .App-logo {
-  height: 60px;
+  height: 80px;
 }
 
 .App-header {
@@ -53,8 +54,9 @@ input {
 .field-container {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
   padding: 5px;
-  flex: 0 1
 }
 
 .first-field {
@@ -170,8 +172,8 @@ label {
   height: 30px;
   margin-left: 8px;
   border: 2px solid #81C784;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+  appearance: none;
+  appearance: none;
   color: gray;
   text-align: center;
   font-weight: 700;  
