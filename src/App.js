@@ -16,7 +16,8 @@ class App extends Component {
     objectsCount: '',
     obj: [],
     endResult: [],
-    empty: false
+    empty: false,
+    copyButton: 'Copy All'
   }
 
   removeKey = () => this.setState((prevState) => {
@@ -150,7 +151,6 @@ class App extends Component {
     } else {
     await this.repeat();
     await this.setState({ results: true })
-    console.log(this.state.endResult)
     }
   }
 
@@ -171,7 +171,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      {/* {console.log(this.state)} */}
         <header className="App-header">
             <img className="App-logo" alt='logo' src={Logo}/>     
             <h1 className="App-title">Objenerator<span style={{color: 'red'}}>.</span></h1>
@@ -211,18 +210,19 @@ class App extends Component {
             <div className="obj">{"},"}</div>
             <div className="array">
                 {"]"}
-                {/* <button className="submit" onClick={() => this.setState({ results: true })}>Generate Objects</button> */}
                 <button className="submit" onClick={this.endResult}>Generate Objects</button>
             </div>
           </div>
           :
           <div style={{marginTop: '30px'}}>
-            <CopyToClipboard text={beautify(JSON.stringify(this.state.endResult), { indent_size: 2 })}
-            onCopy={() => this.setState({copied: true})}>
-            <button className="submit">Copy All</button>
+            <CopyToClipboard
+            text={beautify(JSON.stringify(this.state.endResult),
+            { indent_size: 2 })}
+            onCopy={() => this.setState({ copyButton: 'Copied' })}>
+            <button className={this.state.copyButton === 'Copied' ? "submit" : 'submit-gray'}>{this.state.copyButton}</button>
             </CopyToClipboard>
             <button
-              className="submit"
+              className="submit-gray"
               onClick={() => this.setState({
                 results: false,
                 fields: ['fa78f93e-2d9c-4867-95f0-51b99ad3bc58'],

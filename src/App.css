@@ -247,6 +247,17 @@ label {
   background-color: #81C784
 }
 
+.submit-gray {
+  vertical-align: middle;
+  padding: 6px;
+  cursor: pointer;
+  border: none;
+  margin-left: 20px;
+  color: white;  
+  border-radius: 10px;
+  background-color: gray
+}
+
 textarea {
     padding:10px;
     margin-top: 4vh;
