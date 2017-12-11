@@ -36,16 +36,6 @@ class App extends Component {
     editing: false
   }
 
-  removeKey = () => this.setState((prevState) => {
-    if(this.state.fields.length > 1) {
-    return {fields: prevState.fields.slice(0, -1)};
-  }});
-
-  addKey = () => this.setState((prevState) => {
-    if(this.state.fields.length < 8) {
-    return {fields: prevState.fields.concat(uuidv4())};
-  }});
-
   objCreator = (key) => {
     switch(key.body) {
 
@@ -324,6 +314,16 @@ class App extends Component {
       break
     }
   }
+  
+  removeKey = () => this.setState((prevState) => {
+    if(this.state.fields.length > 1) {
+    return {fields: prevState.fields.slice(0, -1)};
+  }});
+
+  addKey = () => this.setState((prevState) => {
+    if(this.state.fields.length < 8) {
+    return {fields: prevState.fields.concat(uuidv4())};
+  }});
 
   repeat = async() => {
     const count = this.state.objectsCount === '' ? 2 : this.state.objectsCount
@@ -352,7 +352,33 @@ class App extends Component {
         return endResult[keyName] = keyBody
       }
     });
-    await this.setState({ endResult: this.state.endResult.concat(endResult) })
+    this.setState({ endResult: this.state.endResult.concat(endResult) })
+  }
+
+  edit = () => this.setState({
+    results: false,
+    copyButton: 'Copy All',
+    endResult: [],
+    editing: true
+  })
+
+  reset = () => this.setState({
+    results: false,
+    fields: ['fa78f93e-2d9c-4867-95f0-51b99ad3bc58'],
+    objectsCount: '',
+    obj: [],
+    endResult: [],
+    empty: false,
+    update: true
+  })
+
+  copyAll = () => this.setState({ copyButton: 'Copied' })
+
+  objectCounter = (event) => {
+    Number(event) <= 100 ?
+    this.setState({ objectsCount: Number(event) })
+    :
+    this.setState({ objectsCount: 100 })
   }
 
   render() {
@@ -384,19 +410,13 @@ class App extends Component {
                 type="text"
                 placeholder='2'
                 value={this.state.objectsCount}
-                onChange={(event) => {
-                  Number(event.target.value) <= 100 ?
-                  this.setState({ objectsCount: Number(event.target.value) })
-                  :
-                  this.setState({ objectsCount: 100 })
-                  }
-                }
+                onChange={(event) => this.objectCounter(event.target.value)}
                 />
               </label>  
             </div>
-            <FlipMove duration={300} easing="ease">
-              {this.state.fields.map(field => <Field editing={this.state.editing} update={this.state.update} objCreator={this.objCreator} id={field} key={field}/>)}
-            </FlipMove>
+              <FlipMove duration={300} easing="ease">
+                {this.state.fields.map(field => <Field editing={this.state.editing} update={this.state.update} objCreator={this.objCreator} id={field} key={field}/>)}
+              </FlipMove>
             <div className="obj">{"},"}</div>
             <div className="array">
                 {"]"}
@@ -406,31 +426,18 @@ class App extends Component {
           {this.state.results &&
               <div style={{ marginTop: '30px' }}>
                 <CopyToClipboard
-                text={beautify(JSON.stringify(this.state.endResult), { indent_size: 2 })}
-                onCopy={() => this.setState({ copyButton: 'Copied' })}>
-                <button className={this.state.copyButton === 'Copied' ? "submit" : 'submit-gray'} style={{ marginLeft: 0 }}>{this.state.copyButton}</button>
+                  text={beautify(JSON.stringify(this.state.endResult), { indent_size: 2 })}
+                  onCopy={this.copyAll}>
+                    <button className={this.state.copyButton === 'Copied' ? "submit" : 'submit-gray'} style={{ marginLeft: 0 }}>{this.state.copyButton}</button>
                 </CopyToClipboard>
                 <button
                   className="submit-gray"
-                  onClick={() => this.setState({
-                    results: false,
-                    copyButton: 'Copy All',
-                    endResult: [],
-                    editing: true
-                  })}>Edit
+                  onClick={this.edit}>Edit
                 </button>
                 <button
                   className="submit-gray"
                   style={{ backgroundColor: '#EF5350' }}
-                  onClick={() => this.setState({
-                    results: false,
-                    fields: ['fa78f93e-2d9c-4867-95f0-51b99ad3bc58'],
-                    objectsCount: '',
-                    obj: [],
-                    endResult: [],
-                    empty: false,
-                    update: true
-                  })}>Reset
+                  onClick={this.reset}>Reset
                 </button>
                 <h1 style={{marginBottom: 0}}>Your objects:</h1>
                 <Textarea endResult={this.state.endResult}/>

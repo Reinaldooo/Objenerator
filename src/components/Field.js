@@ -30,6 +30,20 @@ class Field extends Component {
         }
     }
 
+    handleFirstInput = async (event) => {
+        if(!this.props.editing) {
+        this.setState({ keyName: event, emptyKey: false, keyPlaceholder: 'Key name' })
+        } else {
+        this.setState({
+            keyName: event,
+            emptyKey: false,
+            selectDefaultValue: 'choose',
+            fieldOk: false,
+            secondFieldChoice: null,
+            thirdFieldChoice: null })                        
+        }
+    }
+
     second = (x) => {
         switch(x) {
             case "string":
@@ -232,19 +246,7 @@ class Field extends Component {
                 type="text"
                 placeholder={this.state.keyPlaceholder}
                 value={this.state.keyName}
-                onChange={async (event) => {
-                    if(!this.props.editing) {
-                    this.setState({ keyName: event.target.value, emptyKey: false, keyPlaceholder: 'Key name' })
-                    } else {
-                    this.setState({
-                        keyName: event.target.value,
-                        emptyKey: false,
-                        selectDefaultValue: 'choose',
-                        fieldOk: false,
-                        secondFieldChoice: null,
-                        thirdFieldChoice: null })                        
-                    }
-                }}/>                
+                onChange={(event) => this.handleFirstInput(event.target.value)}/>                
             </div>
             <div className="colon">:</div>
             <div className="second-field">
