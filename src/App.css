@@ -373,3 +373,8 @@ textarea {
 textarea:focus, input:focus, select:focus{
   outline: none;
 }
+
+.footer i {
+  margin: 1%;
+  font-size: 2.5em;  
+}

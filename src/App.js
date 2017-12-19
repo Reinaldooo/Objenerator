@@ -443,6 +443,9 @@ class App extends Component {
                 <Textarea endResult={this.state.endResult}/>
               </div>
           }
+          <div className="footer">
+          <i class="fa fa-github-square" aria-hidden="true"></i>
+          </div>
       </div>
     );
   }
