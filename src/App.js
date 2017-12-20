@@ -385,11 +385,9 @@ class App extends Component {
 
     const hide = { display: 'none' };
     const show = {};
-    const { log } = console;
 
     return (
       <div className="App">
-      {log(this.state)}
         <header className="App-header">
             <img className="App-logo" alt='logo' src={Logo}/>     
             <h1 className="App-title">Objenerator<span style={{color: 'red'}}>.</span></h1>
