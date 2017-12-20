@@ -385,9 +385,11 @@ class App extends Component {
 
     const hide = { display: 'none' };
     const show = {};
+    const { log } = console;
 
     return (
       <div className="App">
+      {log(this.state)}
         <header className="App-header">
             <img className="App-logo" alt='logo' src={Logo}/>     
             <h1 className="App-title">Objenerator<span style={{color: 'red'}}>.</span></h1>
@@ -444,7 +446,7 @@ class App extends Component {
               </div>
           }
           <div className="footer">
-          <i class="fa fa-github-square" aria-hidden="true"></i>
+          <i className="fa fa-github-square" aria-hidden="true"></i>
           </div>
       </div>
     );

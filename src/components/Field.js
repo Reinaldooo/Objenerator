@@ -261,7 +261,7 @@ class Field extends Component {
                         <option value="img">Img URL</option>
                         <option value="true">True</option>
                         <option value="false">False</option>
-                        <option value="getBool">True/False</option>
+                        <option value="getBool">True or False</option>
                         <option value="id">Unique ID</option>
                     </select>
                 </div>
