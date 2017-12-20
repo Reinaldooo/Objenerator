@@ -444,7 +444,7 @@ class App extends Component {
               </div>
           }
           <div className="footer">
-          <i className="fa fa-github-square" aria-hidden="true"></i>
+          <a target="_blanc" href='https://github.com/Reinaldooo/Objenerator'><i className="fa fa-github-square" aria-hidden="true"/></a>
           </div>
       </div>
     );
