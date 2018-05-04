@@ -3,7 +3,6 @@ import uuidv4 from 'uuid/v4';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import beautify from 'js-beautify';
 import FlipMove from 'react-flip-move';
-
 import Field from './components/Field'
 import Logo from './Logo.png';
 import { 
@@ -444,7 +443,7 @@ class App extends Component {
               </div>
           }
           <div className="footer">
-          <a target="_blanc" href='https://github.com/Reinaldooo/Objenerator'><i className="fa fa-github-square" aria-hidden="true"/></a>
+          <a target="_blanc" aria-label="Github page" title="Github page" href='https://github.com/Reinaldooo/Objenerator'><i className="fa fa-github-square" aria-hidden="true"/></a>
           </div>
       </div>
     );
